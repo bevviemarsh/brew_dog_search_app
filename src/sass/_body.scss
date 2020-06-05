@@ -1,0 +1,12 @@
+body {
+  @include getSizeParams(100vw, 100vh);
+  display: grid;
+  grid-template-columns: 0 minmax(25%, 1fr) minmax(20%, 35%) 0;
+  grid-template-rows: 0 minmax(5%, 10%) 1fr 0;
+  gap: $gapValue;
+  grid-template-areas:
+    ". . . ." ". search search ." ". img txt ."
+    ". . . . ";
+  font-family: $fontFamily;
+  background-color: azure;
+}

@@ -1,0 +1,44 @@
+@mixin getSizeParams($widthValue, $heightValue) {
+  width: $widthValue;
+  height: $heightValue;
+}
+
+@mixin getFlexParams(
+  $horizontalValue,
+  $verticalValue,
+  $direction: row,
+  $display: flex
+) {
+  display: $display;
+  flex-direction: $direction;
+  justify-content: $horizontalValue;
+  align-items: $verticalValue;
+}
+
+@mixin getTextParams(
+  $weight,
+  $size,
+  $color,
+  $letterSpacing,
+  $family: $fontFamily,
+  $transform: none,
+  $align: left
+) {
+  font-family: $family;
+  font-weight: $weight;
+  font-size: $size;
+  color: $color;
+  text-transform: $transform;
+  letter-spacing: $letterSpacing;
+  text-align: $align;
+}
+
+@mixin getVisualContainerParams(
+  $bcgColor: $lightCyan,
+  $boxShadow: $boxShadowValues,
+  $borderRadius: 1%
+) {
+  background-color: $bcgColor;
+  box-shadow: $boxShadow;
+  border-radius: 1%;
+}

@@ -1,0 +1,24 @@
+.sectionImg {
+  grid-area: img;
+  @include getFlexParams(space-between, center, column);
+
+  &__title {
+    @include getSizeParams(100%, 10%);
+    @include getFlexParams(start, center);
+
+    &--txt {
+      margin-left: $distanceValue;
+      @include getTextParams(
+        bold,
+        $bigFontSize,
+        $darkSlateGray,
+        $letterSpacing
+      );
+    }
+  }
+
+  &__container {
+    @include getSizeParams(100%, 88%);
+    @include getVisualContainerParams();
+  }
+}

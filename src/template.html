@@ -3,9 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1>example</h1>
+    <header id="header" class="header">
+      <form action="" id="mainForm" class="header__form">
+        <select name="" id="selectDataset" class="header__form--select">
+          <option value="">--choose beerset--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <input
+          type="search"
+          placeholder="filter data"
+          name=""
+          id="filterDataset"
+          class="header__form--filter"
+        />
+
+        <input
+          type="search"
+          placeholder="hop"
+          name=""
+          id="hopInput"
+          class="header__form--search"
+        />
+
+        <input
+          type="search"
+          placeholder="abv"
+          name=""
+          id="abvInput"
+          class="header__form--search"
+        />
+
+        <button id="searchBtn" class="header__form--searchBtn">Search</button>
+        <button id="clearBtn" class="header__form--searchBtn">Clear</button>
+      </form>
+    </header>
+
+    <section id="imgSection" class="sectionImg">
+      <div class="sectionImg__title">
+        <h2 class="sectionImg__title--txt">Image results</h2>
+      </div>
+
+      <div class="sectionImg__container"></div>
+    </section>
+
+    <section id="txtSection" class="sectionTxt">
+      <div class="sectionTxt__title">
+        <h2 class="sectionTxt__title--txt">Detailed info</h2>
+      </div>
+      <div class="sectionTxt__container"></div>
+    </section>
   </body>
 </html>

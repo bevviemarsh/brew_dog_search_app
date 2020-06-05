@@ -1,0 +1,80 @@
+.header {
+  grid-area: search;
+  @include getFlexParams(center, center);
+
+  &__form {
+    @include getFlexParams(space-between, center);
+    @include getSizeParams(100%, 100%);
+
+    &--select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      @include getSizeParams(15%, 70%);
+      @include getTextParams(
+        bold,
+        $smallFontSize,
+        $darkSlateGray,
+        $letterSpacing,
+        $fontFamily,
+        uppercase,
+        center
+      );
+      text-align-last: center;
+      @include getVisualContainerParams();
+      border: none;
+      cursor: pointer;
+    }
+
+    &--filter {
+      @include getSizeParams(25%, 70%);
+    }
+
+    &--search {
+      @include getSizeParams(12%, 70%);
+    }
+
+    &--filter,
+    &--search {
+      @include getTextParams(
+        bold,
+        $smallFontSize,
+        $darkSlateGray,
+        $letterSpacing,
+        $fontFamily,
+        uppercase,
+        center
+      );
+      @include getVisualContainerParams();
+      border: none;
+    }
+
+    &--searchBtn {
+      @include getSizeParams(10%, 70%);
+      @include getTextParams(
+        bold,
+        $mediumFontSize,
+        $darkSlateGray,
+        $letterSpacing,
+        $fontFamily,
+        uppercase,
+        center
+      );
+      @include getVisualContainerParams();
+      border: none;
+      cursor: pointer;
+    }
+
+    &--filter:focus,
+    &--select:focus,
+    &--search:focus,
+    &--searchBtn:focus {
+      outline: none;
+    }
+
+    &--filter::-webkit-search-cancel-button,
+    &--search::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+  }
+}
