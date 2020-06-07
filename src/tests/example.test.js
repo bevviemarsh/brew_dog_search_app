@@ -1,4 +1,4 @@
-import { add } from "./example";
+import { add } from "../components/example";
 
 test("check", () => {
   const num1 = 10;
