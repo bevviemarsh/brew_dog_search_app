@@ -22,6 +22,6 @@ export interface DisplayedData {
   foodPairing: string[];
 }
 
-export interface HopName {
-  name: string;
+export interface DataModifiers {
+  getElementsByProperty: (array: [], property: string) => string[];
 }

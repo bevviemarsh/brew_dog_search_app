@@ -8,12 +8,7 @@
 
     &--txt {
       margin-left: $distanceValue;
-      @include getTextParams(
-        bold,
-        $bigFontSize,
-        $darkSlateGray,
-        $letterSpacing
-      );
+      @include getTextParams(bold, $bigFontSize, $gainsboro, $letterSpacing);
     }
   }
 

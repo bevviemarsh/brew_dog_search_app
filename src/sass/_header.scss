@@ -14,7 +14,7 @@
       @include getTextParams(
         bold,
         $smallFontSize,
-        $darkSlateGray,
+        $gainsboro,
         $letterSpacing,
         $fontFamily,
         uppercase,
@@ -39,7 +39,7 @@
       @include getTextParams(
         bold,
         $smallFontSize,
-        $darkSlateGray,
+        $gainsboro,
         $letterSpacing,
         $fontFamily,
         uppercase,
@@ -54,7 +54,7 @@
       @include getTextParams(
         bold,
         $mediumFontSize,
-        $darkSlateGray,
+        $gainsboro,
         $letterSpacing,
         $fontFamily,
         uppercase,

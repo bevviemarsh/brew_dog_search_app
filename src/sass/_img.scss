@@ -8,17 +8,59 @@
 
     &--txt {
       margin-left: $distanceValue;
-      @include getTextParams(
-        bold,
-        $bigFontSize,
-        $darkSlateGray,
-        $letterSpacing
-      );
+      @include getTextParams(bold, $bigFontSize, $gainsboro, $letterSpacing);
     }
   }
 
   &__container {
     @include getSizeParams(100%, 88%);
     @include getVisualContainerParams();
+    @include getFlexParams(space-around, center);
+    flex-wrap: wrap;
+
+    &--img {
+      @include getSizeParams(20%, 40%);
+      @include getFlexParams(center, center, column);
+      @include getTextParams(
+        normal,
+        $smallFontSize,
+        $gainsboro,
+        $letterSpacing,
+        $fontFamily,
+        none,
+        center
+      );
+    }
+
+    &--img > img {
+      margin-bottom: $distanceValue;
+    }
+
+    &--pagination {
+      @include getSizeParams(100%, 15%);
+      @include getFlexParams(center, center);
+    }
+
+    &--pagination > button {
+      @include getSizeParams(5%, 100%);
+      @include getTextParams(
+        normal,
+        $smallFontSize,
+        $gainsboro,
+        $letterSpacing,
+        $fontFamily,
+        none,
+        center
+      );
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    &--pagination > button.active {
+      font-size: $mediumFontSize;
+      font-weight: bold;
+      color: $persianGreen;
+    }
   }
 }

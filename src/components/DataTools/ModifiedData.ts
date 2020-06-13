@@ -1,9 +1,7 @@
-import {
-  DataStructure,
-  DisplayedData,
-  HopName,
-} from "../../interfaces/DataStructure";
+import { DataStructure, DisplayedData } from "../../interfaces/DataStructure";
+import { dataActions } from "./DataActions";
 import { getDisplayedImages } from "../DisplayTools/DisplayImages";
+import { DataProviders } from "../../enums/DataProviders";
 
 export const getModifiedData = (data: DataStructure[]): void => {
   const dataToDisplay = data.map(
@@ -16,7 +14,10 @@ export const getModifiedData = (data: DataStructure[]): void => {
         abv: d.abv,
         ibu: d.ibu,
         firstBrewed: d.first_brewed,
-        hops: d.ingredients.hops.map((d: HopName) => d.name),
+        hops: dataActions.getElementsByProperty(
+          d.ingredients.hops,
+          DataProviders.NAME
+        ),
         foodPairing: d.food_pairing,
       }
   );

@@ -1,12 +1,10 @@
 import { URLBuilders } from "../URLConfig/URLParams";
 import { getProperURL } from "../URLConfig/BaseURL";
 import { getModifiedData } from "../DataTools/ModifiedData";
+import { factory } from "../DOM/DOMElements";
+import { DOMProviders } from "../../enums/DOMElementsProviders";
 
 const { root, itemTypeParam, pageParam, numberOfItemsParam } = URLBuilders;
-
-const selectBeerset = document.getElementById(
-  "selectDataset"
-)! as HTMLSelectElement;
 
 const getData = async (optionValue: string) => {
   try {
@@ -26,6 +24,8 @@ const getData = async (optionValue: string) => {
   }
 };
 
-selectBeerset.addEventListener("change", (e) =>
-  getData((e.target as HTMLOptionElement).value)
-);
+factory
+  .createDOMElements(DOMProviders.SELECT)!
+  .selectDataset.addEventListener("change", (e: any) =>
+    getData((e.target as HTMLOptionElement).value)
+  );
