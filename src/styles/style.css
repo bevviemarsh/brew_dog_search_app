@@ -78,8 +78,6 @@ body {
   text-align: center;
   text-align-last: center;
   background-color: #202531;
-  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
-          box-shadow: -1px 1px 3px 1px #009e92;
   border-radius: 1%;
   border: none;
   cursor: pointer;
@@ -104,8 +102,6 @@ body {
   letter-spacing: 0.1em;
   text-align: center;
   background-color: #202531;
-  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
-          box-shadow: -1px 1px 3px 1px #009e92;
   border-radius: 1%;
   border: none;
 }
@@ -121,10 +117,10 @@ body {
   letter-spacing: 0.1em;
   text-align: center;
   background-color: #202531;
-  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
-          box-shadow: -1px 1px 3px 1px #009e92;
   border-radius: 1%;
   border: none;
+  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
+          box-shadow: -1px 1px 3px 1px #009e92;
   cursor: pointer;
 }
 
@@ -188,8 +184,6 @@ body {
   width: 100%;
   height: 88%;
   background-color: #202531;
-  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
-          box-shadow: -1px 1px 3px 1px #009e92;
   border-radius: 1%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -230,10 +224,17 @@ body {
   text-transform: none;
   letter-spacing: 0.1em;
   text-align: center;
+  cursor: pointer;
 }
 
 .sectionImg__container--img > img {
   margin-bottom: 0.5em;
+}
+
+.sectionImg__container--img > p {
+  margin-bottom: 0.5em;
+  font-size: 2vw;
+  color: #f5c447;
 }
 
 .sectionImg__container--pagination {
@@ -292,6 +293,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
 .sectionTxt__title {
@@ -327,8 +329,32 @@ body {
   width: 100%;
   height: 88%;
   background-color: #202531;
-  -webkit-box-shadow: -1px 1px 3px 1px #009e92;
-          box-shadow: -1px 1px 3px 1px #009e92;
   border-radius: 1%;
+  overflow-y: auto;
+}
+
+.sectionTxt__container::-webkit-scrollbar {
+  width: 0.5em;
+  background: #009e92;
+}
+
+.sectionTxt__container::-webkit-scrollbar-thumb {
+  background: #f5c447;
+}
+
+.sectionTxt__container--details {
+  color: #dedee2;
+  text-align: justify;
+}
+
+.sectionTxt__container--details > p {
+  margin: 0.5em;
+  font-size: 1.5vw;
+  line-height: 2vw;
+}
+
+.sectionTxt__container--details > p > span {
+  color: #f5c447;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

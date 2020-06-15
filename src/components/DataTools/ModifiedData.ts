@@ -3,6 +3,8 @@ import { dataActions } from "./DataActions";
 import { getDisplayedImages } from "../DisplayTools/DisplayImages";
 import { DataProviders } from "../../enums/DataProviders";
 
+const { getElementsByProperty, getUniqueElements } = dataActions;
+
 export const getModifiedData = (data: DataStructure[]): void => {
   const dataToDisplay = data.map(
     (d) =>
@@ -14,9 +16,8 @@ export const getModifiedData = (data: DataStructure[]): void => {
         abv: d.abv,
         ibu: d.ibu,
         firstBrewed: d.first_brewed,
-        hops: dataActions.getElementsByProperty(
-          d.ingredients.hops,
-          DataProviders.NAME
+        hops: getUniqueElements(
+          getElementsByProperty(d.ingredients.hops, DataProviders.NAME)
         ),
         foodPairing: d.food_pairing,
       }

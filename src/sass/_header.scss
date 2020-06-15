@@ -62,6 +62,7 @@
       );
       @include getVisualContainerParams();
       border: none;
+      box-shadow: $boxShadowValues;
       cursor: pointer;
     }
 

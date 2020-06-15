@@ -2,7 +2,10 @@ import { DisplayedData } from "../../interfaces/DataStructure";
 import { factory } from "../DOM/DOMElements";
 import { DOMProviders } from "../../enums/DOMElementsProviders";
 import { ButtonElements } from "../../enums/ButtonProviders";
+import { ErrorHandler } from "../../enums/ErrorHandler";
+import { DataProviders } from "../../enums/DataProviders";
 import { paginationElements } from "./PaginationCofing";
+import { getDisplayedDetails } from "./DisplayDetails";
 
 const {
   itemsPerPage,
@@ -29,8 +32,12 @@ export const getDisplayedImages = (data: DisplayedData[]): void => {
   const images: string = paginatedItems
     .map(
       (d) =>
-        `<figure class="sectionImg__container--img">
-          <img src=${d.image} loading="lazy" width="30" height="100">
+        `<figure id="imgElement" class="sectionImg__container--img">
+          ${
+            d.image
+              ? `<img src=${d.image} loading="lazy" width="30" height="100">`
+              : `<p>${ErrorHandler.NO_IMAGE}</p>`
+          }
           <figcaption>${d.name}</figcaption>
         </figure>`
     )
@@ -47,6 +54,10 @@ export const getDisplayedImages = (data: DisplayedData[]): void => {
 
   paginationElements.currentPage++;
 
+  getDisplayedDetails(
+    factory.createDOMElements(DOMProviders.FIGURE_LIST)!.figureList,
+    paginatedItems
+  );
   getPagination(items, paginationContainer, itemsPerPage);
 };
 
@@ -58,7 +69,7 @@ const getPagination = (
   container.innerHTML = "";
   let numberOfPage: number = getPages(items.length, itemsPerPage);
 
-  paginationElements.startPage = 1;
+  paginationElements.startPage = DataProviders.RESET_PAGE;
   do {
     const btn = getCreatedButtons(paginationElements.startPage, items);
     container.appendChild(btn);

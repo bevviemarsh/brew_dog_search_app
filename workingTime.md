@@ -13,3 +13,5 @@
 - 07.06.2020, Sunday, 2.5 hours
 - 11.06.2020, Thursday, 30 minutes
 - 12.06.2020, Friday, 1 hour
+- 13.06.2020, Saturday, 3 hours
+- 14.06.2020, Sunday, 30 minutes

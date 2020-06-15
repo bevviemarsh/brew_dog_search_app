@@ -5,4 +5,9 @@ export const dataActions: DataModifiers = {
     array.length && propertyName.length
       ? array.map((item) => item[propertyName])
       : [],
+
+  getUniqueElements: (array: string[]): string[] =>
+    array.length
+      ? array.filter((item, index) => array.indexOf(item) === index)
+      : [],
 };

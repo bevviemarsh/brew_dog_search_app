@@ -3,6 +3,10 @@ import { getProperURL } from "../URLConfig/BaseURL";
 import { getModifiedData } from "../DataTools/ModifiedData";
 import { factory } from "../DOM/DOMElements";
 import { DOMProviders } from "../../enums/DOMElementsProviders";
+import { ButtonElements } from "../../enums/ButtonProviders";
+import { ErrorHandler } from "../../enums/ErrorHandler";
+import { DataProviders } from "../../enums/DataProviders";
+import { paginationElements } from "../DisplayTools/PaginationCofing";
 
 const { root, itemTypeParam, pageParam, numberOfItemsParam } = URLBuilders;
 
@@ -18,14 +22,15 @@ const getData = async (optionValue: string) => {
       )
     );
     const data = await response.json();
-    return getModifiedData(data);
+    getModifiedData(data);
   } catch (err) {
-    console.log(`Error: ${err}`);
+    console.log(`${ErrorHandler.ERROR}${err}`);
   }
 };
 
 factory
   .createDOMElements(DOMProviders.SELECT)!
-  .selectDataset.addEventListener("change", (e: any) =>
-    getData((e.target as HTMLOptionElement).value)
-  );
+  .selectDataset.addEventListener(ButtonElements.CHANGE, (e: any) => {
+    getData((e.target as HTMLOptionElement).value);
+    paginationElements.currentPage = DataProviders.RESET_PAGE;
+  });

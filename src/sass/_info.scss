@@ -1,6 +1,7 @@
 .sectionTxt {
   grid-area: txt;
   @include getFlexParams(space-between, center, column);
+  overflow: hidden;
 
   &__title {
     @include getSizeParams(100%, 10%);
@@ -15,5 +16,31 @@
   &__container {
     @include getSizeParams(100%, 88%);
     @include getVisualContainerParams();
+    overflow-y: auto;
+  }
+
+  &__container::-webkit-scrollbar {
+    width: $distanceValue;
+    background: $persianGreen;
+  }
+
+  &__container::-webkit-scrollbar-thumb {
+    background: $maizeCrayola;
+  }
+
+  &__container--details {
+    color: $gainsboro;
+    text-align: justify;
+  }
+
+  &__container--details > p {
+    margin: $distanceValue;
+    font-size: $mediumFontSize;
+    line-height: $bigFontSize;
+  }
+
+  &__container--details > p > span {
+    color: $maizeCrayola;
+    font-weight: bold;
   }
 }
