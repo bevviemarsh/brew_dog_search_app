@@ -1,14 +1,13 @@
 import { DisplayedData } from "../../interfaces/DataStructure";
-import { factory } from "../DOM/DOMElements";
-import { ButtonElements } from "../../enums/ButtonProviders";
-import { DOMProviders } from "../../enums/DOMElementsProviders";
+import { infoContainer } from "../DOM/DOMElements";
+import { ButtonAndHandlerElements } from "../../enums/ButtonProviders";
 
 export const getDisplayedDetails = (list: NodeList, items: DisplayedData[]) => {
   const figureElements: NodeList = list;
   const displayedItems: DisplayedData[] = items;
 
-  figureElements.forEach((element, i) =>
-    element.addEventListener(ButtonElements.CLICK, () => {
+  figureElements.forEach((element, i) => {
+    element.addEventListener(ButtonAndHandlerElements.CLICK, (e: any) => {
       const info: string = displayedItems
         .map((d, idx) =>
           i === idx
@@ -26,9 +25,7 @@ export const getDisplayedDetails = (list: NodeList, items: DisplayedData[]) => {
         )
         .join(" ");
 
-      factory.createDOMElements(
-        DOMProviders.INFO_CONTAINER
-      )!.infoContainer.innerHTML = `${info}`;
-    })
-  );
+      infoContainer.innerHTML = `${info}`;
+    });
+  });
 };

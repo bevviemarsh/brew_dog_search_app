@@ -31,7 +31,7 @@
     }
 
     &--search {
-      @include getSizeParams(12%, 70%);
+      @include getSizeParams(15%, 70%);
     }
 
     &--filter,
@@ -66,6 +66,10 @@
       cursor: pointer;
     }
 
+    &--searchBtn.active {
+      animation: buttonsAnimation 0.2s;
+    }
+
     &--filter:focus,
     &--select:focus,
     &--search:focus,
@@ -77,5 +81,19 @@
     &--search::-webkit-search-cancel-button {
       -webkit-appearance: none;
     }
+  }
+}
+
+@keyframes buttonsAnimation {
+  0% {
+    box-shadow: $boxShadowValues;
+  }
+
+  50% {
+    box-shadow: $boxShadowAnimatedValues;
+  }
+
+  100% {
+    box-shadow: $boxShadowValues;
   }
 }

@@ -1,7 +1,7 @@
 import { DisplayedData } from "../../interfaces/DataStructure";
-import { factory } from "../DOM/DOMElements";
+import { factory, imgContainer } from "../DOM/DOMElements";
 import { DOMProviders } from "../../enums/DOMElementsProviders";
-import { ButtonElements } from "../../enums/ButtonProviders";
+import { ButtonAndHandlerElements } from "../../enums/ButtonProviders";
 import { ErrorHandler } from "../../enums/ErrorHandler";
 import { DataProviders } from "../../enums/DataProviders";
 import { paginationElements } from "./PaginationCofing";
@@ -17,9 +17,10 @@ const {
 export const getDisplayedImages = (data: DisplayedData[]): void => {
   const items: DisplayedData[] = data;
 
-  const itemsContainer: HTMLDivElement = factory.createDOMElements(
-    DOMProviders.IMG_CONTAINER
-  )!.imgContainer;
+  if (!data.length) {
+    imgContainer.innerHTML = `No data`;
+    return;
+  }
 
   paginationElements.currentPage--;
   let firstItem: number = getFirstItem(
@@ -35,7 +36,7 @@ export const getDisplayedImages = (data: DisplayedData[]): void => {
         `<figure id="imgElement" class="sectionImg__container--img">
           ${
             d.image
-              ? `<img src=${d.image} loading="lazy" width="30" height="100">`
+              ? `<img src=${d.image} loading="lazy" width="30" height="100" class="image">`
               : `<p>${ErrorHandler.NO_IMAGE}</p>`
           }
           <figcaption>${d.name}</figcaption>
@@ -43,14 +44,10 @@ export const getDisplayedImages = (data: DisplayedData[]): void => {
     )
     .join(" ");
 
-  itemsContainer.innerHTML = `
+  imgContainer.innerHTML = `
     ${images}
     <div id="paginationContainer" class="sectionImg__container--pagination"></div>
   `;
-
-  const paginationContainer: HTMLDivElement = factory.createDOMElements(
-    DOMProviders.PAGINATION_CONTAINER
-  )!.paginationContainer;
 
   paginationElements.currentPage++;
 
@@ -58,7 +55,12 @@ export const getDisplayedImages = (data: DisplayedData[]): void => {
     factory.createDOMElements(DOMProviders.FIGURE_LIST)!.figureList,
     paginatedItems
   );
-  getPagination(items, paginationContainer, itemsPerPage);
+  getPagination(
+    items,
+    factory.createDOMElements(DOMProviders.PAGINATION_CONTAINER)!
+      .paginationContainer,
+    itemsPerPage
+  );
 };
 
 const getPagination = (
@@ -82,15 +84,15 @@ const getCreatedButtons = (
   items: DisplayedData[]
 ): HTMLButtonElement => {
   const button = document.createElement(
-    ButtonElements.BUTTON
+    ButtonAndHandlerElements.BUTTON
   ) as HTMLButtonElement;
   button.innerText = page.toString();
 
   if (paginationElements.currentPage === page) {
-    button.classList.add(ButtonElements.ACTIVE);
+    button.classList.add(ButtonAndHandlerElements.ACTIVE);
   }
 
-  button.addEventListener(ButtonElements.CLICK, () => {
+  button.addEventListener(ButtonAndHandlerElements.CLICK, () => {
     paginationElements.currentPage = page;
     getDisplayedImages(items);
   });

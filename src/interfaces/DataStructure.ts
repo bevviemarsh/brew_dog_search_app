@@ -25,4 +25,5 @@ export interface DisplayedData {
 export interface DataModifiers {
   getElementsByProperty: (array: [], property: string) => string[];
   getUniqueElements: (array: string[]) => string[];
+  getReplacedWhiteSpaces: (item: string) => string;
 }

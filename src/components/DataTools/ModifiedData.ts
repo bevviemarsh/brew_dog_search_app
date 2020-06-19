@@ -2,6 +2,7 @@ import { DataStructure, DisplayedData } from "../../interfaces/DataStructure";
 import { dataActions } from "./DataActions";
 import { getDisplayedImages } from "../DisplayTools/DisplayImages";
 import { DataProviders } from "../../enums/DataProviders";
+import { getFilteredData } from "../DataTools/FilterData";
 
 const { getElementsByProperty, getUniqueElements } = dataActions;
 
@@ -23,5 +24,6 @@ export const getModifiedData = (data: DataStructure[]): void => {
       }
   );
 
+  getFilteredData(dataToDisplay);
   getDisplayedImages(dataToDisplay);
 };

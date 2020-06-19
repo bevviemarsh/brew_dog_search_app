@@ -3,6 +3,8 @@ interface URLElements {
   itemTypeParam: string;
   pageParam: string;
   numberOfItemsParam: string;
+  hopParam?: string;
+  abvParam?: string;
 }
 
 interface BaseURL {
@@ -15,8 +17,18 @@ interface BaseURL {
   ): string;
 }
 
-interface ExtendedURL extends BaseURL {
-  (hopParam?: string, abvParam?: string): string;
+interface ExtendedURL {
+  (
+    root: string,
+    itemTypeParam: string,
+    pageParam: string,
+    optionParam: string,
+    numberOfItemsParam: string,
+    hopParam: string,
+    hopName: string,
+    abvParam: string,
+    abvValue: string
+  ): string;
 }
 
-export { URLElements, BaseURL as URL, ExtendedURL as ExtraParams };
+export { URLElements, BaseURL as URL, ExtendedURL as ExtraURL };

@@ -16,6 +16,15 @@
     @include getSizeParams(100%, 88%);
     @include getVisualContainerParams();
     @include getFlexParams(space-around, center);
+    @include getTextParams(
+      normal,
+      $bigFontSize,
+      $gainsboro,
+      $letterSpacing,
+      $fontFamily,
+      none,
+      center
+    );
     flex-wrap: wrap;
 
     &--img {
@@ -30,11 +39,11 @@
         none,
         center
       );
-      cursor: pointer;
     }
 
     &--img > img {
       margin-bottom: $distanceValue;
+      cursor: pointer;
     }
 
     &--img > p {

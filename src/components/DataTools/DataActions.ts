@@ -10,4 +10,6 @@ export const dataActions: DataModifiers = {
     array.length
       ? array.filter((item, index) => array.indexOf(item) === index)
       : [],
+
+  getReplacedWhiteSpaces: (item: string) => item.replace(/ /g, "_"),
 };

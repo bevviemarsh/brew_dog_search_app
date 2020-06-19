@@ -1,6 +1,10 @@
 import { dataActions } from "../components/DataTools/DataActions";
 
-const { getElementsByProperty, getUniqueElements } = dataActions;
+const {
+  getElementsByProperty,
+  getUniqueElements,
+  getReplacedWhiteSpaces,
+} = dataActions;
 
 test("get array of elements using specific property", () => {
   const exampleArray = [
@@ -54,5 +58,22 @@ test("get unique elements from empty array", () => {
 
   expect(getUniqueElements(exampleEmptyArray)).toStrictEqual(
     expectedEmptyArray
+  );
+});
+
+test("transform white spaces into underscores", () => {
+  const exampleString = "white spaces are here";
+  const expectedString = "white_spaces_are_here";
+  const exampleStringNoSpaces = "noSpaces";
+  const expectedStringNoSpaces = "noSpaces";
+  const exampleEmptyString = "";
+  const expectedEmptyString = "";
+
+  expect(getReplacedWhiteSpaces(exampleString)).toStrictEqual(expectedString);
+  expect(getReplacedWhiteSpaces(exampleStringNoSpaces)).toStrictEqual(
+    expectedStringNoSpaces
+  );
+  expect(getReplacedWhiteSpaces(exampleEmptyString)).toStrictEqual(
+    expectedEmptyString
   );
 });
